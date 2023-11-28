@@ -1,0 +1,21 @@
+Game loading :
+  - Create a start game button
+  - When the user click the button launch the game page.
+  - The ball should be above the paddle and centered.
+
+Start the Game :
+  -The game page has been loaded 
+  -The user should be able to move the paddle before starting the game
+  -The game will start when the user click space from the keyboard
+  -The ball should move up towards the bricks.   
+  
+
+User Control :
+  - Allow the user to move the paddle right and left using the keyboard keys : right, left 
+  - To move the ball the user should click space from the keyboard(Just when the game start)
+
+
+Brick Collision :
+  -The brick should disappear when the ball touches it.
+  -The ball should rise when it hits the paddle. 
+  
