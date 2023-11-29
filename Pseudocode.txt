@@ -1,21 +1,32 @@
-Game loading :
-  - Create a start game button
-  - When the user click the button launch the game page.
-  - The ball should be above the paddle and centered.
+Game loading:
+ -Create a start-game button.
+ -When the user clicks the button, it launches the game page.
+ -The ball should be above the paddle and centered.
 
-Start the Game :
-  -The game page has been loaded 
-  -The user should be able to move the paddle before starting the game
-  -The game will start when the user click space from the keyboard
-  -The ball should move up towards the bricks.   
-  
+Start the game:
+ -The game page has been loaded.
+ -The user should be able to move the paddle before starting the game.
+ -The game will start when the user clicks space on the keyboard.
+ -The ball should move up towards the bricks.
+  
 
-User Control :
-  - Allow the user to move the paddle right and left using the keyboard keys : right, left 
-  - To move the ball the user should click space from the keyboard(Just when the game start)
+User Control:
+ -Allow the user to move the paddle right and left using the keyboard keys: right, left.
+ -To move the ball, the user should click the space key on the keyboard (just when the game starts).
 
 
-Brick Collision :
-  -The brick should disappear when the ball touches it.
-  -The ball should rise when it hits the paddle. 
-  
+Brick Collision:
+ -The brick should disappear when the ball touches it.
+ -The ball should rise when it hits the paddle.
+
+Winning and Losing:
+
+ -Displaying a winning message if the player destroys all the bricks.
+ -Displaying a losing message if the ball passes the paddle to the buttom of the game screen three times.
+
+Score:
+ -Create a variable to keep track of the score:
+     *The score increases by 10 points for each brick that is destroyed.
+     *The score decreases by 10 points for each ball that passes the paddle.
+       
+  
