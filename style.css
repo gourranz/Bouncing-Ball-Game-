@@ -1,0 +1,61 @@
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.GameScreen {
+    display: block;
+    position: relative;
+    margin: 10px auto;
+    padding: 0;
+    height: 640px;
+    width: 800px;
+    background-color: black;
+    border-top: 10px lightblue solid;
+    border-left:10px lightblue solid;
+    border-right:10px lightblue solid;
+}
+.Ball {
+    background-color: antiquewhite;
+    position: absolute;
+    width: 30px;
+    height: 23px;
+    border-radius: 20px;
+    padding: 0;
+    margin: 0;
+    bottom: 29px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+.paddle {
+
+    background-color: rgb(255, 0, 0);
+    position: absolute;
+    width: 150px;
+    height: 23px;
+    border-radius: 20px;
+    padding: 0;
+    margin: 0;
+    bottom: 3px;
+    left: 50%; /* Start in the middle */
+    transform: translateX(-50%)
+}
+.Bricks {
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.brick {
+    width: 60px;
+    height: 30px;
+    background-color: #b87333; /* Brick color */
+    border: 1px solid #8b4513; /* Brick border color */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Brick shadow */
+    margin: 5px;
+}
