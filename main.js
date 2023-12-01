@@ -42,6 +42,8 @@ const ball = document.getElementById('ball');
 const gameContainer = document.getElementById('container');
 const computedStyles = window.getComputedStyle(ball);
 const bricks = document.querySelectorAll('.brick');
+const scoreElement = document.getElementById('scores');
+let score = 0;
 
 //Generating the bricks
 
@@ -68,43 +70,48 @@ const bricks = document.querySelectorAll('.brick');
         let speedX = 2 ;
         let speedY = 0;
         let brickHitCooldown = false;
+        
   
         function updateBallPosition() {
             if (!gameRunning) {
                 return;
             }
-
+    
             x += speedX;
             y += speedY;
-
-            // Check collision with walls
-            if (x < 0 || x  + ball.clientWidth > gameContainer.clientWidth ) {
-                speedX = -speedX;
-            }
-
-            if (y < 0 || y + ball.clientHeight > gameContainer.clientHeight) {
-                speedY = -speedY;
-            }
-
-            ball.style.left = x + 'px';
-            ball.style.top = y + 'px';
-        }
-        function updateGame() {
-
-
+    
             for (const brick of bricks) {
-                if (!brickHitCooldown && isCollision(ball, brick)) {
-                    brick.style.display = 'none'; // Hide the brick
-                    brickHitCooldown = true; // Set cooldown
+                if (!brickHitCooldown && !brick.classList.contains('break') && isCollision(ball, brick)) {
+                    brick.classList.add('break') ; // Hide the brick
+                    brickHitCooldown = true;
+                    score+=10; 
+                    
+                    scoreElement.textContent = `Score: ${score}`;// Set cooldown
                     setTimeout(() => {
                         brickHitCooldown = false;
                     }, 200); // Adjust the delay as needed
-                    speedY = -speedY; // Reverse ball's vertical direction
+                    speedY = -speedY;
+                 // Reverse ball's vertical direction
                 }
             }
-        requestAnimationFrame(updateGame);
-    }
-
+    
+            // Check collision with walls
+            if (x < 0 || x + ball.clientWidth > gameContainer.clientWidth) {
+                speedX = -speedX;
+            }
+    
+            if (y < 0 || y + ball.clientHeight > gameContainer.clientHeight) {
+                speedY = -speedY;
+            }
+    
+            if (!brickHitCooldown && isCollision(ball, paddle)) {
+                speedY = -speedY; // Reverse ball's vertical direction
+                y -= 20;
+            }
+    
+            ball.style.left = x + 'px';
+            ball.style.top = y + 'px';
+        }
         function isCollision(element1, element2) {
             const rect1 = element1.getBoundingClientRect();
             const rect2 = element2.getBoundingClientRect();
@@ -113,7 +120,7 @@ const bricks = document.querySelectorAll('.brick');
                 rect1.x < rect2.x + rect2.width &&
                 rect1.x + rect1.width > rect2.x &&
                 rect1.y < rect2.y + rect2.height &&
-                rect1.y + rect1.height > rect2.y
+                rect1.y + rect1.height  > rect2.y
             );
         }
 
@@ -121,6 +128,8 @@ const bricks = document.querySelectorAll('.brick');
             if (event.code === 'Space') {
                 if (!gameRunning) {
                     // Start the game on the first space key press
+                
+
                     gameRunning = true;
                     // Move the ball upward when space key is pressed
                     speedY = -4; // spead of the ball
@@ -135,9 +144,28 @@ const bricks = document.querySelectorAll('.brick');
                 requestAnimationFrame(gameLoop);
             }
         }
-        updateGame()
+        
     
 
 
         // Add event listener for the space key
         document.addEventListener('keydown', handleSpaceKey);
+
+
+         /*function updateGame() {
+             
+            const paddleY = parseFloat(window.getComputedStyle(paddle).left)
+
+            */
+            
+
+         /*   if (!brickHitCooldown && isCollision(ball, paddle)) {
+                brickHitCooldown = true;
+                ballSpeedY = -ballSpeedY; // Reverse ball's vertical direction
+            } */
+
+
+    // Update paddle position on the screen
+           // paddle.updateDisplay();
+
+    // Repeat the update function

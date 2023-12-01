@@ -60,3 +60,28 @@ body {
     height: 100%;
     object-fit: cover;
 }
+.break {
+    opacity: 0;
+}
+.score {
+    position: absolute;
+    padding: 12px;
+    bottom: 300px ;
+    opacity: 0.8;
+    
+    
+}
+.score img {
+    width: 40%;
+    height: 90%;
+    object-fit: cover;
+    
+}
+.score p{
+    color: gold;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    font-size: 23px ;
+}
