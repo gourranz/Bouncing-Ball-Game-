@@ -8,46 +8,41 @@
     <script defer src="./main.js"></script>
 </head>
 <body>
+  
 <div class="GameScreen" id="container">
+  <audio id="backgroundMusic" loop>
+    <source src="./Sounds/chase-8-bit-73312.mp3">
+  </audio>
       <div class="Ball" id="ball">
         <img src="./Images/58-Breakout-Tiles.png" alt="ballimage" height="30px" width="40px">
       </div>
+      
       <div class="paddle" id="playerPaddle">
         <img src="./Images/50-Breakout-Tiles.png" alt="Paddleimage" width="200px" height="30px">
       </div>
+      <div id="win-message" style="display: none;">
+        Congratulations! You won!
+    </div>
       <div class="Bricks">
         <div class="brick"><img src="./Images/01-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/03-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/05-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/07-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/09-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/11-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/13-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/17-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/19-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/01-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/03-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/05-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/07-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/09-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/11-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/13-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/17-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/19-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/01-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/03-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/05-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/07-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/09-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/11-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/13-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/17-Breakout-Tiles.png" alt="brick1" height="20px"></div>
-        <div class="brick"><img src="./Images/19-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+        
+        
       </div>
       <div class="score" id="displayscore">
         <img src="./Images/49-Breakout-Tiles.png" alt="">
         <p class="scorenum" id="scores">Score: 0</p>
       </div>
+      <div id="game-over-message">Game Over!</div>
+      <audio id="gameOverSound" src="./Sounds/mixkit-arcade-game-opener-222.wav"></audio>
+      <audio id="brickSound" src="./Sounds/chase-8-bit-73312.mp3"></audio>
+      <button id="play-again-btn" onclick="playAgain()">Play Again</button>
+      <div class="level2" id="next-level-message">Good Job!
+       <a href="level2.html"> <div id="next-level">Next Level</div></a>
+      
+
+      </div>
+      
+
     
 
 </div>

@@ -3,44 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing-Ball-Game</title>
-    <link rel="stylesheet" href="./style.css">
-    <script defer src="./main.js"></script>
+    
+    <title>Bouncing Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./main.js"></script>
 </head>
 <body>
-<div class="GameScreen">
-      <div class="Ball"></div>
-      <div class="paddle" id="playerPaddle"></div>
-    <div class="Bricks">
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
-      <div class="brick"></div>
+    <div class="menu">
+        <img src="./Images/breakout_bg.png" alt="menu">
+
+        <button class="button" onclick="startGame()">Start Game</button>
+        <p class="title">Bouncing Ball Game</p>
+
+        <script>
+            // JavaScript function to navigate to the game page
+            function startGame() {
+                window.location.href = 'game.html';
+            }
+            </script>
+
     </div>
-
-</div>
-
+    
     
 </body>
 </html>

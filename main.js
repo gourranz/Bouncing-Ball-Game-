@@ -6,6 +6,11 @@
 const paddle = document.getElementById('playerPaddle');
 let movingLeft = false;
 let movingRight = false;
+const initialPaddlePosition = {
+    bottom: parseFloat(getComputedStyle(paddle).bottom),
+    left: parseFloat(getComputedStyle(paddle).left)
+};
+
 
 //
 document.addEventListener('keydown', function (event) {
@@ -43,6 +48,11 @@ const gameContainer = document.getElementById('container');
 const computedStyles = window.getComputedStyle(ball);
 const bricks = document.querySelectorAll('.brick');
 const scoreElement = document.getElementById('scores');
+const gameOverMessage = document.getElementById('game-over-message');
+const playAgainButton = document.getElementById('play-again-btn');
+let brickStates;
+
+
 let score = 0;
 
 //Generating the bricks
@@ -68,14 +78,26 @@ let score = 0;
         let x = 402; // Initial x position
         let y = 600; // Initial y position
         let speedX = 2 ;
-        let speedY = 0;
+        let speedY = -4;
         let brickHitCooldown = false;
+        let backgroundMusic = document.getElementById('backgroundMusic');
         
+        function startBackgroundMusic() {
+            backgroundMusic.play();
+        }
+        
+        function stopBackgroundMusic() {
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
+        }
   
         function updateBallPosition() {
+            playSound('./Sounds/chase-8-bit-73312.mp3');
             if (!gameRunning) {
                 return;
             }
+
+            let allBricksBroken = true;
     
             x += speedX;
             y += speedY;
@@ -93,6 +115,15 @@ let score = 0;
                     speedY = -speedY;
                  // Reverse ball's vertical direction
                 }
+                if (!brick.classList.contains('break')) {
+                    allBricksBroken = false;
+                }
+            }
+
+            if (allBricksBroken) {
+                gameRunning = false; // Stop the game
+                displayWinningMessage();
+                return;
             }
     
             // Check collision with walls
@@ -108,6 +139,13 @@ let score = 0;
                 speedY = -speedY; // Reverse ball's vertical direction
                 y -= 20;
             }
+            if (y + ball.clientHeight > gameContainer.clientHeight) {
+                // Ball passed the paddle, game over
+                gameOver();
+                return;
+            }
+           
+        
     
             ball.style.left = x + 'px';
             ball.style.top = y + 'px';
@@ -126,9 +164,10 @@ let score = 0;
 
         function handleSpaceKey(event) {
             if (event.code === 'Space') {
+
                 if (!gameRunning) {
                     // Start the game on the first space key press
-                
+                startBackgroundMusic();
 
                     gameRunning = true;
                     // Move the ball upward when space key is pressed
@@ -137,14 +176,68 @@ let score = 0;
                 } 
             }
         }
+        function displayWinningMessage() {
+            // Display your winning message or perform any actions
+            // For example, you can show an element with an id 'win-message'
+           
+            const winMessageElement = document.getElementById('next-level-message');
+            const buttonMessage = document.getElementById ('next-level')
+            winMessageElement.style.display = 'block';
+            buttonMessage.style.display = 'block'
+        }
+        function gameOver() {
+             gameRunning = false;
+            stopBackgroundMusic();
+            playSound('Sounds/mixkit-arcade-game-opener-222.wav');
+            gameRunning = false;
+            gameOverMessage.style.display = 'block';
+            playAgainButton.style.display = 'block';
+        }
+        function playAgain() {
+            gameOverMessage.style.display = 'none';
+            playAgainButton.style.display = 'none';
+            resetGame();
+        }
+        function playSound(soundFile) {
+            const sound = new Audio(soundFile);
+            sound.play();
+        }
+        function resetGame() {
+            // Reset ball and other game elements
+            x = 402; // Initial x position
+            y = 600; // Initial y position
+            speedX = 2;
+            speedY = -4;
+        
+            // Update paddle's initial position correctly
+            paddle.style.bottom = initialPaddlePosition.bottom + 'px';
+            paddle.style.left = initialPaddlePosition.left + 'px';
+        
+            // Ensure brickStates is initialized and set to true for all bricks
+            brickStates = Array.from(document.querySelectorAll('.brick')).map(() => true);
+        
+            Array.from(document.querySelectorAll('.brick')).forEach((brick, index) => {
+                brick.classList.remove('break'); // Remove 'break' class
+        brickStates[index] = true; // Reset brick state
+        brick.style.display = 'block'; // Show the brick
+            });
+            score=0; 
+                    
+            scoreElement.textContent = `Score: ${score}`;
+        
+            // Start the game
+            gameRunning = true;
+            gameLoop();
+        }
 
         function gameLoop() {
+           
             updateBallPosition();
             if (gameRunning) {
                 requestAnimationFrame(gameLoop);
             }
         }
-        
+    
     
 
 
