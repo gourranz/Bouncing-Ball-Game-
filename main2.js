@@ -146,10 +146,11 @@ function handleSpaceKey(event) { // Check if the space key been pressed and if s
             }
 }
 
+
 function displayWinningMessage() {
             // Display your winning message or perform any actions
             // For example, you can show an element with an id 'win-message'
-           
+            playSound('Sounds/Victory - Sound Effect.mp3');
             const winMessageElement = document.getElementById('winningMessage');
             const buttonMessage = document.getElementById ('next-level')
             winMessageElement.style.display = 'block';
