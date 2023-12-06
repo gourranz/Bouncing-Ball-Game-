@@ -5,12 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level 2</title>
     <link rel="stylesheet" href="style2.css">
-    <script src="./main2.js"></script>
+    <script defer src="./main2.js"></script>
 </head>
 <body>
-    
+    <div class="GameScreen" id="container">
+            <div class="Ball" id="ball">
+              <img src="./Images/58-Breakout-Tiles.png" alt="ballimage" height="30px" width="40px">
+            </div>
+            
+            <div class="paddle" id="playerPaddle">
+              <img src="./Images/45-Breakout-Tiles.png" alt="Paddleimage" width="200px" height="30px">
+            </div>
+        
+        <div class="Bricks" id="brick">
+          
+          <div class="brick"><img src="./Images/19-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/01-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/03-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/05-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/07-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/09-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/11-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/13-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/17-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/19-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/01-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/03-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/19-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/01-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+          <div class="brick"><img src="./Images/03-Breakout-Tiles.png" alt="brick1" height="20px"></div>
+        </div>
+        <div class="score" id="displayscore">
+          <img src="./Images/49-Breakout-Tiles.png" alt="">
+          <p class="scorenum" id="scores">Score: 0</p>
+        </div>
+        <div id="game-over-message">Game Over!</div>
+        <audio id="gameOverSound" src="./Sounds/mixkit-arcade-game-opener-222.wav"></audio>
+        <audio id="brickSound" src="./Sounds/chase-8-bit-73312.mp3"></audio>
+        <button id="play-again-btn" onclick="playAgain()">Play Again</button>
+        <div class="winning" id="winningMessage">Good Job!
 
-    
+    </div>
     
 </body>
 </html>

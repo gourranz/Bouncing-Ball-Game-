@@ -1,24 +1,38 @@
-
-
-//Moving the Player Paddle
-
-
+const ball = document.getElementById('ball');
+const gameContainer = document.getElementById('container');
+const computedStyles = window.getComputedStyle(ball);
+const bricks = document.querySelectorAll('.brick');
+const scoreElement = document.getElementById('scores');
+const gameOverMessage = document.getElementById('game-over-message');
+const playAgainButton = document.getElementById('play-again-btn');
+let brickStates;
+let score = 0;
+let gameRunning = false;
+let x = 402; // Initial x position
+let y = 600; // Initial y position
+let speedX = 2 ;
+let speedY = -4;
+let brickHitCooldown = false;
+let backgroundMusic = document.getElementById('backgroundMusic');
 const paddle = document.getElementById('playerPaddle');
 let movingLeft = false;
 let movingRight = false;
-const initialPaddlePosition = {
+let gameover = false;
+const initialPaddlePosition = { // Intializing the Paddle position
     bottom: parseFloat(getComputedStyle(paddle).bottom),
     left: parseFloat(getComputedStyle(paddle).left)
 };
 
 
-//
+//Moving the Player Paddle
 document.addEventListener('keydown', function (event) {
+    if (gameRunning) {
     if (event.key === 'ArrowLeft') {
         movingLeft = true;
     } else if (event.key === 'ArrowRight') {
         movingRight = true;
     }
+}
 });
 
 document.addEventListener('keyup', function (event) {
@@ -43,56 +57,8 @@ function movePaddle() {
 
 setInterval(movePaddle, 20);
 
-const ball = document.getElementById('ball');
-const gameContainer = document.getElementById('container');
-const computedStyles = window.getComputedStyle(ball);
-const bricks = document.querySelectorAll('.brick');
-const scoreElement = document.getElementById('scores');
-const gameOverMessage = document.getElementById('game-over-message');
-const playAgainButton = document.getElementById('play-again-btn');
-let brickStates;
-
-
-let score = 0;
-
-//Generating the bricks
-
-/*function generateBricks(rows, cols) {
-    const bricks = [];
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            const brick = document.createElement('div');
-            brick.className = 'brick';
-            gameContainer.appendChild(brick);
-            bricks.push(brick);
-        }
-    }
-
-    return bricks;
-}
-*/
-
-//const bricks = generateBricks(5, 5);
-
-        let gameRunning = false;
-        let x = 402; // Initial x position
-        let y = 600; // Initial y position
-        let speedX = 2 ;
-        let speedY = -4;
-        let brickHitCooldown = false;
-        let backgroundMusic = document.getElementById('backgroundMusic');
-        
-        function startBackgroundMusic() {
-            backgroundMusic.play();
-        }
-        
-        function stopBackgroundMusic() {
-            backgroundMusic.pause();
-            backgroundMusic.currentTime = 0;
-        }
-  
         function updateBallPosition() {
-            playSound('./Sounds/chase-8-bit-73312.mp3');
+            
             if (!gameRunning) {
                 return;
             }
@@ -107,6 +73,7 @@ let score = 0;
                     brick.classList.add('break') ; // Hide the brick
                     brickHitCooldown = true;
                     score+=10; 
+                    playSound('Sounds/Lego Break  Fall Apart - Sound Effect (HD).mp3');
                     
                     scoreElement.textContent = `Score: ${score}`;// Set cooldown
                     setTimeout(() => {
@@ -165,15 +132,16 @@ let score = 0;
         function handleSpaceKey(event) {
             if (event.code === 'Space') {
 
-                if (!gameRunning) {
+                if (!gameRunning && !gameover) {
                     // Start the game on the first space key press
-                startBackgroundMusic();
-
+                
                     gameRunning = true;
                     // Move the ball upward when space key is pressed
                     speedY = -4; // spead of the ball
                     gameLoop();
-                } 
+                } else {
+                    gameRunning = false;
+                }
             }
         }
         function displayWinningMessage() {
@@ -187,7 +155,7 @@ let score = 0;
         }
         function gameOver() {
              gameRunning = false;
-            stopBackgroundMusic();
+            gameover = true;
             playSound('Sounds/mixkit-arcade-game-opener-222.wav');
             gameRunning = false;
             gameOverMessage.style.display = 'block';
@@ -196,6 +164,7 @@ let score = 0;
         function playAgain() {
             gameOverMessage.style.display = 'none';
             playAgainButton.style.display = 'none';
+            gameover = false;
             resetGame();
         }
         function playSound(soundFile) {
@@ -245,20 +214,4 @@ let score = 0;
         document.addEventListener('keydown', handleSpaceKey);
 
 
-         /*function updateGame() {
-             
-            const paddleY = parseFloat(window.getComputedStyle(paddle).left)
-
-            */
-            
-
-         /*   if (!brickHitCooldown && isCollision(ball, paddle)) {
-                brickHitCooldown = true;
-                ballSpeedY = -ballSpeedY; // Reverse ball's vertical direction
-            } */
-
-
-    // Update paddle position on the screen
-           // paddle.updateDisplay();
-
-    // Repeat the update function
+         
