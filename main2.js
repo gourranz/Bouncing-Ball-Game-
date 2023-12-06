@@ -152,7 +152,7 @@ function displayWinningMessage() {
             // For example, you can show an element with an id 'win-message'
             playSound('Sounds/Victory - Sound Effect.mp3');
             const winMessageElement = document.getElementById('winningMessage');
-            const buttonMessage = document.getElementById ('next-level')
+            const buttonMessage = document.getElementById ('playAgain')
             winMessageElement.style.display = 'block';
             buttonMessage.style.display = 'block'
 }
