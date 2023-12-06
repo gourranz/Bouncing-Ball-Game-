@@ -19,7 +19,6 @@ const paddle = document.getElementById('playerPaddle');
 let movingLeft = false;
 let movingRight = false;
 let gameover = false;
-let count = 0;
 const initialPaddlePosition = { // Intializing the Paddle position
     bottom: parseFloat(getComputedStyle(paddle).bottom),
     left: parseFloat(getComputedStyle(paddle).left)
@@ -131,20 +130,14 @@ function isCollision(element1, element2) { // Collision Function
             );
 }
 
-function handleSpaceKey(event) { // Check if the space key been pressed and if so start the game
-            if (event.code === 'Space') {
-
-                if (!gameRunning && !gameover) {
-                    // Start the game on the first space key press
-                
-                    gameRunning = true;
-                    // Move the ball upward when space key is pressed
-                    speedY = -6; // spead of the ball
-                    gameLoop();
-                } else {
-                    gameRunning = false;
-                }
-            }
+function handleSpaceKey(event) {
+    if (event.code === 'Space' && !gameRunning && !gameover) {
+        // Start the game only if it's not already running and not over
+        gameRunning = true;
+        // Move the ball upward when space key is pressed
+        speedY = -6; // speed of the ball
+        gameLoop();
+    }
 }
 
 function displayWinningMessage() {
