@@ -147,16 +147,17 @@ function handleSpaceKey(event) { // Check if the space key been pressed and if s
 }
 
 function displayWinningMessage() {
-            // Display your winning message or perform any actions
-            // For example, you can show an element with an id 'win-message'
-           
+            // Display The Next Level button 
+            playSound('Sounds/Victory - Sound Effect.mp3');
             const winMessageElement = document.getElementById('next-level-message');
             const buttonMessage = document.getElementById ('next-level')
+            const goodJobMessage = document.getElementById ('goodJob')
             winMessageElement.style.display = 'block';
             buttonMessage.style.display = 'block'
+            goodJobMessage.style.display = 'block'
 }
 
-function gameOver() {
+function gameOver() { // Game Over function
              gameRunning = false;
             gameover = true;
             playSound('Sounds/mixkit-arcade-game-opener-222.wav');
@@ -165,14 +166,14 @@ function gameOver() {
             playAgainButton.style.display = 'block';
 }
 
-function playAgain() {
+function playAgain() { // Play again function
             gameOverMessage.style.display = 'none';
             playAgainButton.style.display = 'none';
             gameover = false;
             resetGame();
 }
 
-function playSound(soundFile) {
+function playSound(soundFile) { // Play sound function
             const sound = new Audio(soundFile);
             sound.play();
 }
@@ -192,7 +193,7 @@ function resetGame() {
             brickStates = Array.from(document.querySelectorAll('.brick')).map(() => true);
         
             Array.from(document.querySelectorAll('.brick')).forEach((brick, index) => {
-                brick.classList.remove('break'); // Remove 'break' class
+            brick.classList.remove('break'); // Remove 'break' class
             brickStates[index] = true; // Reset brick state
             brick.style.display = 'block'; // Show the brick
             });
@@ -205,7 +206,7 @@ function resetGame() {
             gameLoop();
 }
 
-function gameLoop() {
+function gameLoop() { //Game loop function
            
             updateBallPosition();
             if (gameRunning) {
