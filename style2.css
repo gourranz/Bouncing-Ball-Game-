@@ -159,4 +159,28 @@ body { /* Image from https://www.pexels.com/photo/red-concrete-brick-259915/ */
     font-weight: bold;
     color: red;
 }
+span { /* https://codepen.io/hiroyaiizuka/pen/VgXBoO */
+    height: 400px;
+    width: 100%;
+    background-image: url("https://dl.dropbox.com/s/r2s8s2r17wi0xm6/flame.png?dl=0");
+    background-position: 0 -1000px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fire 4s linear infinite;
+  }
+  
+  h1 {
+    color: #fff;
+    font-size: 80px;
+    text-align: center;
+  }
+  
+  @keyframes fire {
+    0% {
+      background-position: 0% -50%;
+    }
+    100% {
+      background-position: 0% -25%;
+    }
+  }
 
