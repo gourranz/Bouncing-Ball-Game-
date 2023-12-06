@@ -11,7 +11,7 @@ Start the game:
   
 
 User Control:
- -Allow the user to move the paddle right and left using the keyboard keys: right, left.
+ -Allow the user to move the paddle right and left using the keyboard keys: right and left.
  -To move the ball, the user should click the space key on the keyboard (just when the game starts).
 
 
@@ -29,6 +29,11 @@ Score:
      *The score increases by 10 points for each brick that is destroyed.
 
 Levels: 
- -If the user destroyed all the bricks, a Next Level button will show up
- -If the user clicked on the Next Level button will take him to the next level page.        
+ -If the user destroys all the bricks, a Next Level button will show up.
+ -If the user clicks on the Next Level button, it will take him to the next level page.
+ 
+ Sounds :
+  -If the ball passes the paddle, a game of oversound will be played.
+  -When the ball touches the bricks, break sounds will be played.
+  -When the user destroys all the bricks, a winning sound will be played.       
   
