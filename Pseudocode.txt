@@ -22,7 +22,7 @@ Brick Collision:
 Winning and Losing:
 
  -Displaying a winning message if the player destroys all the bricks.
- -Displaying a losing message if the ball passes the paddle to the buttom of the game screen three times.
+ -Displaying a losing message if the ball passes the paddle to the buttom of the game screen.
 
 Score:
  -Create a variable to keep track of the score:

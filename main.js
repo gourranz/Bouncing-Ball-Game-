@@ -19,6 +19,7 @@ const paddle = document.getElementById('playerPaddle');
 let movingLeft = false;
 let movingRight = false;
 let gameover = false;
+let count = 0;
 const initialPaddlePosition = { // Intializing the Paddle position
     bottom: parseFloat(getComputedStyle(paddle).bottom),
     left: parseFloat(getComputedStyle(paddle).left)
@@ -183,7 +184,7 @@ function resetGame() {
             x = 402; // Initial x position
             y = 600; // Initial y position
             speedX = 2;
-            speedY = -4;
+            speedY = -6;
         
             // Update paddle's initial position correctly
             paddle.style.bottom = initialPaddlePosition.bottom + 'px';
