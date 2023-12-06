@@ -27,6 +27,8 @@ Winning and Losing:
 Score:
  -Create a variable to keep track of the score:
      *The score increases by 10 points for each brick that is destroyed.
-     *The score decreases by 10 points for each ball that passes the paddle.
-       
+
+Levels: 
+ -If the user destroyed all the bricks, a Next Level button will show up
+ -If the user clicked on the Next Level button will take him to the next level page.        
   
