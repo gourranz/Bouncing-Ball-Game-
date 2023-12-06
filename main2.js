@@ -5,10 +5,11 @@ let brickPosition = 0; // Declare brickPosition here
 let direction = 5; // Adjust the speed as needed
 let movingLeft = false;
 let movingRight = false;
+let gameover = false;
 const brickSpeed = 2;
 const initialPaddlePosition = {
-    bottom: parseFloat(getComputedStyle(paddle).bottom),
-    left: parseFloat(getComputedStyle(paddle).left)
+bottom: parseFloat(getComputedStyle(paddle).bottom),
+left: parseFloat(getComputedStyle(paddle).left)
 };
 
 
@@ -141,6 +142,7 @@ let score = 0;
             }
             if (y + ball.clientHeight > gameContainer.clientHeight) {
                 // Ball passed the paddle, game over
+                gameRunning = false;
                 gameOver();
                 return;
             }
@@ -165,15 +167,18 @@ let score = 0;
         function handleSpaceKey(event) {
             if (event.code === 'Space') {
 
-                if (!gameRunning) {
+                if (!gameRunning && !gameover) {
                     // Start the game on the first space key press
                 
                     gameRunning = true;
                     // Move the ball upward when space key is pressed
-                    speedY = -6; // spead of the ball
+                    speedY = -4; // spead of the ball
                     gameLoop();
-                } 
+                } else {
+                    gameRunning = false;
+                }
             }
+            
         }
         function displayWinningMessage() {
             // Display your winning message or perform any actions
@@ -187,6 +192,7 @@ let score = 0;
         
         function gameOver() {
              gameRunning = false;
+             gameover = true;
              const brickContainer = document.getElementById("brick");
              brickContainer.classList.add("paused");
           
@@ -198,6 +204,7 @@ let score = 0;
         function playAgain() {
             gameOverMessage.style.display = 'none';
             playAgainButton.style.display = 'none';
+            gameover = false;
             resetGame();
         }
         function playSound(soundFile) {
